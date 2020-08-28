@@ -49,6 +49,11 @@ setText_norefresh("Green Light")
 setRGB(0,255,0)
 time.sleep(1)
 
+for c in range(0,255):
+        setText_norefresh("Going to sleep in {}...".format(str(c)))
+        setRGB(c,255-c,0)
+        time.sleep(0.1)
+
 # Slowly change the colors every 0.01 seconds.
 # for c in range(0,255):
 #     setRGB(c,255-c,0)

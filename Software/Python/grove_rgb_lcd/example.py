@@ -41,12 +41,12 @@ setText("Yo")
 setRGB(0,128,64)
 time.sleep(2)
 
-setRGB(255,0,0)
 setText("Red Light")
-
+setRGB(255,0,0)
 time.sleep(1)
+
+setText("Green Light")
 setRGB(0,255,0)
-setRGB("Green Light")
 time.sleep(1)
 
 # Slowly change the colors every 0.01 seconds.

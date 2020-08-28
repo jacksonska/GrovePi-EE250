@@ -45,7 +45,7 @@ setText("Red Light")
 setRGB(255,0,0)
 time.sleep(1)
 
-setText("Green Light")
+setText_norefresh("Green Light")
 setRGB(0,255,0)
 time.sleep(1)
 

@@ -35,7 +35,8 @@ THE SOFTWARE.
 
 from grove_rgb_lcd import *
 
-setText("Hello world\nLCD test")
+# setText("Hello world\nLCD test")
+setText("Yo")
 setRGB(0,128,64)
 
 # Slowly change the colors every 0.01 seconds.

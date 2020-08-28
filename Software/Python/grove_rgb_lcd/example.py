@@ -39,14 +39,15 @@ from grove_rgb_lcd import *
 # setText("Hello world\nLCD test")
 setText("Yo")
 setRGB(0,128,64)
+time.sleep(2)
 
 setRGB(255,0,0)
 setText("Red Light")
 
-time.sleep(100)
+time.sleep(1)
 setRGB(0,255,0)
 setRGB("Green Light")
-time.sleep(100)
+time.sleep(1)
 
 # Slowly change the colors every 0.01 seconds.
 # for c in range(0,255):

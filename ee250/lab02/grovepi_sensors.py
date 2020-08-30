@@ -47,18 +47,25 @@ if __name__ == '__main__':
 	full_angle = 300
 
 	while True:
+		try:
+			# Read sensor value from potentiometer
+			sensor_value = grovepi.analogRead(potentiometer)
 
-		# Read sensor value from potentiometer
-		sensor_value = grovepi.analogRead(potentiometer)
+			# Calculate voltage
+			voltage = round((float)(sensor_value) * adc_ref / 1023, 2)
 
-		# Calculate voltage
-		voltage = round((float)(sensor_value) * adc_ref / 1023, 2)
+			# Calculate rotation in degrees (0 to 300)
+			degrees = round((voltage * full_angle) / grove_vcc, 2)
+			# Set the LCD text to what was calculated
+			lcd.setText_norefresh("Hello, angle is: %.2f" %(degrees))
+		
 
-		# Calculate rotation in degrees (0 to 300)
-		degrees = round((voltage * full_angle) / grove_vcc, 2)
-
-		lcd.setText_norefresh("Hello, angle is: %.2f" %(degrees))
-
+		except KeyboardInterrupt:
+			lcd.setText("Program Quit")
+			break
+		except IOError:
+			lcd.setText("IOError")
+			break
     # while True:
     #     #So we do not poll the sensors too quickly which may introduce noise,
     #     #sleep for a reasonable time of 200ms between each iteration.

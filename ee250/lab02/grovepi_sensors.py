@@ -31,7 +31,7 @@ be true"""
 if __name__ == '__main__':
     PORT = 4    # D4
 
-	setText("Hello")    
+	setText("Hello")
 
     # while True:
     #     #So we do not poll the sensors too quickly which may introduce noise,

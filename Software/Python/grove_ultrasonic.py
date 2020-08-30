@@ -34,6 +34,7 @@ THE SOFTWARE.
 '''
 
 import grovepi
+import time
 
 # Connect the Grove Ultrasonic Ranger to digital port D4
 # SIG,NC,VCC,GND
@@ -43,6 +44,7 @@ while True:
     try:
         # Read distance value from Ultrasonic
         print(grovepi.ultrasonicRead(ultrasonic_ranger))
+        time.sleep(2)
 
     except TypeError:
         print ("Error")

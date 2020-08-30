@@ -29,7 +29,7 @@ import grove_rgb_lcd as lcd
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
 be true"""
 if __name__ == '__main__':
-	PORT = 4    # D4
+	ultrasonic_ranger = 4    # Ultrasonic ranger is plugged into D4
 
     # Connect the Grove Rotary Angle Sensor to analog port A0
 	# SIG,NC,VCC,GND
@@ -46,18 +46,31 @@ if __name__ == '__main__':
 	# Full value of the rotary angle is 300 degrees, as per it's specs (0 to 300)
 	full_angle = 300
 
+	
+	# Main Program loop
 	while True:
 		try:
+			###############################################################
 			# Read sensor value from potentiometer
 			sensor_value = grovepi.analogRead(potentiometer)
 
 			# Calculate voltage
 			voltage = round((float)(sensor_value) * adc_ref / 1023, 2)
 
-			# Calculate rotation in degrees (0 to 300)
+			# Calculate rotation in degrees (0 to 300) of the potentiometer
 			degrees = round((voltage * full_angle) / grove_vcc, 2)
+			
+
+			###############################################################
+
+			#obtain the ranger's raw data
+			ranger_raw = grovepi.ultrasonicRead(ultrasonic_ranger)
+
+
+			###############################################################
 			# Set the LCD text to what was calculated
-			lcd.setText_norefresh("Hello, angle is: %.1f" %(degrees))
+			lcd.setText_norefresh("angle is: %.1f \n distance: %d" %(degrees, ranger_raw))
+
 		
 
 		except KeyboardInterrupt:
@@ -73,3 +86,4 @@ if __name__ == '__main__':
     #     time.sleep(0.2)
 
     #     print(grovepi.ultrasonicRead(PORT))
+

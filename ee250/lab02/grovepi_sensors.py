@@ -29,7 +29,7 @@ import grove_rgb_lcd as lcd
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
 be true"""
 if __name__ == '__main__':
-    PORT = 4    # D4
+	PORT = 4    # D4
 
     # Connect the Grove Rotary Angle Sensor to analog port A0
 	# SIG,NC,VCC,GND
@@ -49,13 +49,13 @@ if __name__ == '__main__':
 	while True:
 
 		# Read sensor value from potentiometer
-        sensor_value = grovepi.analogRead(potentiometer)
+		sensor_value = grovepi.analogRead(potentiometer)
 
-        # Calculate voltage
-        voltage = round((float)(sensor_value) * adc_ref / 1023, 2)
+		# Calculate voltage
+		voltage = round((float)(sensor_value) * adc_ref / 1023, 2)
 
-        # Calculate rotation in degrees (0 to 300)
-        degrees = round((voltage * full_angle) / grove_vcc, 2)
+		# Calculate rotation in degrees (0 to 300)
+		degrees = round((voltage * full_angle) / grove_vcc, 2)
 
 		lcd.setText_noRefresh("Hello, angle is: ", degrees)
 

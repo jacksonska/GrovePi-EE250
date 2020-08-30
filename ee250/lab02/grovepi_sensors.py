@@ -57,7 +57,7 @@ if __name__ == '__main__':
 		# Calculate rotation in degrees (0 to 300)
 		degrees = round((voltage * full_angle) / grove_vcc, 2)
 
-		lcd.setText_norefresh("Hello, angle is: %f" %(degrees))
+		lcd.setText_norefresh("Hello, angle is: %.2f" %(degrees))
 
     # while True:
     #     #So we do not poll the sensors too quickly which may introduce noise,

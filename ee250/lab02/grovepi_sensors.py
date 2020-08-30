@@ -57,7 +57,7 @@ if __name__ == '__main__':
 			# Calculate rotation in degrees (0 to 300)
 			degrees = round((voltage * full_angle) / grove_vcc, 2)
 			# Set the LCD text to what was calculated
-			lcd.setText_norefresh("Hello, angle is: %.2f" %(degrees))
+			lcd.setText_norefresh("Hello, angle is: %.1f" %(degrees))
 		
 
 		except KeyboardInterrupt:

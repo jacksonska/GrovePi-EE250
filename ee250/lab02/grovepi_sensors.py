@@ -69,6 +69,7 @@ if __name__ == '__main__':
 
 			###############################################################
 			# Set the LCD text to what was calculated
+			lcd.setRGB(0,255,0)
 			lcd.setText_norefresh("angle is: %.1f \n distance: %d" %(degrees, ranger_raw))
 
 		

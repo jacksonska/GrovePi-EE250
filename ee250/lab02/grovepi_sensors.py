@@ -64,8 +64,8 @@ if __name__ == '__main__':
 			###############################################################
 
 			#obtain the ranger's raw data
+			time.sleep(0.2)
 			ranger_raw = grovepi.ultrasonicRead(ultrasonic_ranger)
-
 
 			###############################################################
 			# Set the LCD text to what was calculated

@@ -62,6 +62,7 @@ if __name__ == '__main__':
 
 		except KeyboardInterrupt:
 			lcd.setText("Program Quit")
+			print("Program quit")
 			break
 		except IOError:
 			lcd.setText("IOError")

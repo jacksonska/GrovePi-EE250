@@ -76,6 +76,7 @@ if __name__ == '__main__':
 			###############################################################
 		# Exceptions for quitting the program
 		except KeyboardInterrupt:
+			lcd.setRGB(102,102,255)
 			lcd.setText("Program Quit")
 			print("Program quit")
 			break

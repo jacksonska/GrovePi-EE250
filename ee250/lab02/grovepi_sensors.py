@@ -29,56 +29,50 @@ import grove_rgb_lcd as lcd
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
 be true"""
 if __name__ == '__main__':
-	# Clear lcd screen
-	lcd.setText("")
-
-	ultrasonic_ranger = 4    # Ultrasonic ranger is plugged into D4
+	# Ultrasonic ranger is plugged into D4
+	ultrasonic_ranger = 4
 
     # Connect the Grove Rotary Angle Sensor to analog port A0
-	# SIG,NC,VCC,GND
 	potentiometer = 0
 	grovepi.pinMode(potentiometer, "INPUT")
 	time.sleep(1)
 
-	# Reference voltage of ADC is 5v
-	adc_ref = 5
-
-	# Vcc of the grove interface is normally 5v
-	grove_vcc = 5
-
-	# Full value of the rotary angle is 300 degrees, as per it's specs (0 to 300)
-	full_angle = 300
-
 	# The maximum number the ultrasonic can accept is around 517
 	MAX_ULTRASONIC = 517
+	# The max number to potentiometer can measure is 1023
+	MAX_POTENTIOMETER = 1023
 
+
+	# Clear lcd screen
+	lcd.setText("")
+	lcd.setRGB(0,255,0)
 	# Main Program loop
 	while True:
 		try:
 			###############################################################
 			# Read sensor value from potentiometer
 			sensor_value = grovepi.analogRead(potentiometer)
-
-			# Calculate voltage
-			voltage = round((float) (sensor_value) / 517, 2)
-			# voltage = round((float)(sensor_value) * adc_ref / 1023, 2)
-
-			# Calculate rotation in degrees (0 to 300) of the potentiometer
-			degrees = round((voltage * full_angle) / grove_vcc, 2)
 			
-			# Calculate the distance threshold from the raw value of the potentiometer
-			threshold_poten = round((float)(sensor_value) * 517 / 1023, 1)
+			# Calculate the distance threshold in cm from the raw value of the potentiometer
+			threshold = round((float)(sensor_value) * MAX_ULTRASONIC / MAX_POTENTIOMETER, 1)
 
 			###############################################################
 
-			#obtain the ranger's raw data - it's the distance in CMs?
+			#obtain the ranger's data on how close the object is
 			time.sleep(0.2)
 			ranger_raw = grovepi.ultrasonicRead(ultrasonic_ranger)
 
 			###############################################################
 			# Set the LCD text to what was calculated
-			lcd.setRGB(0,255,0)
-			lcd.setText_norefresh("thresh: %d \n distance: %d" %(threshold_poten, ranger_raw))
+			obj_pres = ""
+			# Check if the threshold is met
+			if ranger_raw <= threshold:
+				obj_pres = "OBJ PRES"
+				# lcd.setRGB(255,0,0)
+			else:
+				# lcd.setRGB(0,255,0)
+
+			lcd.setText_norefresh("%dcm  %s\n distance: %d" %(threshold_poten, obj_pres, ranger_raw))
 			# lcd.setText_norefresh("angle is: %.1f \n distance: %d" %(degrees, ranger_raw))
 
 		

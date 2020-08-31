@@ -29,6 +29,9 @@ import grove_rgb_lcd as lcd
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
 be true"""
 if __name__ == '__main__':
+	# Clear lcd screen
+	lcd.setText("")
+
 	ultrasonic_ranger = 4    # Ultrasonic ranger is plugged into D4
 
     # Connect the Grove Rotary Angle Sensor to analog port A0

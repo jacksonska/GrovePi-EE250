@@ -46,7 +46,9 @@ if __name__ == '__main__':
 	# Full value of the rotary angle is 300 degrees, as per it's specs (0 to 300)
 	full_angle = 300
 
-	
+	# The maximum number the ultrasonic can accept is around 517
+	MAX_ULTRASONIC = 517
+
 	# Main Program loop
 	while True:
 		try:
@@ -60,6 +62,8 @@ if __name__ == '__main__':
 			# Calculate rotation in degrees (0 to 300) of the potentiometer
 			degrees = round((voltage * full_angle) / grove_vcc, 2)
 			
+			# Calculate the distance threshold from the voltage of the potentiometer
+			threshold_poten = round((int)(voltage/MAX_ULTRASONIC))
 
 			###############################################################
 
@@ -70,7 +74,8 @@ if __name__ == '__main__':
 			###############################################################
 			# Set the LCD text to what was calculated
 			lcd.setRGB(0,255,0)
-			lcd.setText_norefresh("angle is: %.1f \n distance: %d" %(degrees, ranger_raw))
+			lcd.setText_norefresh("thresh: %d \n distance: %d" %(threshold_poten, ranger_raw))
+			# lcd.setText_norefresh("angle is: %.1f \n distance: %d" %(degrees, ranger_raw))
 
 		
 

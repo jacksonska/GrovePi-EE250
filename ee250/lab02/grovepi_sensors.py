@@ -68,10 +68,10 @@ if __name__ == '__main__':
 			# Check if the threshold is met
 			if ranger_raw <= threshold:
 				lcd.setRGB(255,0,0)
-				lcd.setText_norefresh("%dcm OBJ PRES\n distance: %dcm" %(threshold,ranger_raw))	
+				lcd.setText_norefresh("%dcm OBJ PRES\n %dcm" %(threshold,ranger_raw))	
 			else:
 				lcd.setRGB(0,255,0)
-				lcd.setText_norefresh("%dcm           \n distance: %dcm" %(threshold, ranger_raw))
+				lcd.setText_norefresh("%dcm           \n%dcm" %(threshold, ranger_raw))
 
 			###############################################################
 		# Exceptions for quitting the program

@@ -77,7 +77,7 @@ if __name__ == '__main__':
 			###############################################################
 			# Set the LCD text to what was calculated
 			lcd.setRGB(0,255,0)
-			lcd.setText_norefresh("thresh: %d \n distance: %d" %(threshold_poten, ranger_raw))
+			lcd.setText_norefresh("volts: %d \n distance: %d" %(voltage, ranger_raw))
 			# lcd.setText_norefresh("angle is: %.1f \n distance: %d" %(degrees, ranger_raw))
 
 		

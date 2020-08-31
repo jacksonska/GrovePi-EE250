@@ -66,8 +66,8 @@ if __name__ == '__main__':
 			# Calculate rotation in degrees (0 to 300) of the potentiometer
 			degrees = round((voltage * full_angle) / grove_vcc, 2)
 			
-			# Calculate the distance threshold from the voltage of the potentiometer
-			threshold_poten = round((float)(voltage/MAX_ULTRASONIC), 1)
+			# Calculate the distance threshold from the raw value of the potentiometer
+			threshold_poten = round((float)(sensor_value) * 517 / 1023, 1)
 
 			###############################################################
 
@@ -78,7 +78,7 @@ if __name__ == '__main__':
 			###############################################################
 			# Set the LCD text to what was calculated
 			lcd.setRGB(0,255,0)
-			lcd.setText_norefresh("thresh: %d \n distance: %d" %(sensor_value, ranger_raw))
+			lcd.setText_norefresh("thresh: %d \n distance: %d" %(threshold_poten, ranger_raw))
 			# lcd.setText_norefresh("angle is: %.1f \n distance: %d" %(degrees, ranger_raw))
 
 		

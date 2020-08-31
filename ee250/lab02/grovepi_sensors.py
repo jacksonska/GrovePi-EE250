@@ -72,7 +72,7 @@ if __name__ == '__main__':
 			# else:
 				# lcd.setRGB(0,255,0)
 
-			lcd.setText_norefresh("%dcm  %s\n distance: %d" %(threshold_poten, obj_pres, ranger_raw))
+			lcd.setText_norefresh("%dcm  %s\n distance: %d" %(threshold, obj_pres, ranger_raw))
 			# lcd.setText_norefresh("angle is: %.1f \n distance: %d" %(degrees, ranger_raw))
 
 		

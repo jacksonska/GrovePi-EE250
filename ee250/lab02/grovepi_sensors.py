@@ -64,21 +64,17 @@ if __name__ == '__main__':
 
 			###############################################################
 			# Set the LCD text to what was calculated
-			obj_pres = ""
+			
 			# Check if the threshold is met
 			if ranger_raw <= threshold:
-				lcd.setText_norefresh("%dcm OBJ PRES\n distance: %dcm" %(threshold,ranger_raw))
-				obj_pres = "OBJ PRES"
-				# lcd.setRGB(255,0,0)
+				lcd.setRGB(255,0,0)
+				lcd.setText_norefresh("%dcm OBJ PRES\n distance: %dcm" %(threshold,ranger_raw))	
 			else:
+				lcd.setRGB(0,255,0)
 				lcd.setText_norefresh("%dcm           \n distance: %dcm" %(threshold, ranger_raw))
-				# lcd.setRGB(0,255,0)
 
-			# lcd.setText_norefresh("%dcm  %s\n distance: %dcm" %(threshold, obj_pres, ranger_raw))
-			# lcd.setText_norefresh("angle is: %.1f \n distance: %d" %(degrees, ranger_raw))
-
-		
-
+			###############################################################
+		# Exceptions for quitting the program
 		except KeyboardInterrupt:
 			lcd.setText("Program Quit")
 			print("Program quit")
@@ -86,10 +82,3 @@ if __name__ == '__main__':
 		except IOError:
 			lcd.setText("IOError")
 			break
-    # while True:
-    #     #So we do not poll the sensors too quickly which may introduce noise,
-    #     #sleep for a reasonable time of 200ms between each iteration.
-    #     time.sleep(0.2)
-
-    #     print(grovepi.ultrasonicRead(PORT))
-

@@ -63,7 +63,7 @@ if __name__ == '__main__':
 			degrees = round((voltage * full_angle) / grove_vcc, 2)
 			
 			# Calculate the distance threshold from the voltage of the potentiometer
-			threshold_poten = round((int)(voltage/MAX_ULTRASONIC))
+			threshold_poten = round((float)(voltage/MAX_ULTRASONIC), 1)
 
 			###############################################################
 

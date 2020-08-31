@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
 			###############################################################
 
-			#obtain the ranger's raw data
+			#obtain the ranger's raw data - it's the distance in CMs?
 			time.sleep(0.2)
 			ranger_raw = grovepi.ultrasonicRead(ultrasonic_ranger)
 

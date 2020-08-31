@@ -69,7 +69,7 @@ if __name__ == '__main__':
 			if ranger_raw <= threshold:
 				obj_pres = "OBJ PRES"
 				# lcd.setRGB(255,0,0)
-			else:
+			# else:
 				# lcd.setRGB(0,255,0)
 
 			lcd.setText_norefresh("%dcm  %s\n distance: %d" %(threshold_poten, obj_pres, ranger_raw))

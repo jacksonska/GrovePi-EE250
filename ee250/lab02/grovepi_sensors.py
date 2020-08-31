@@ -60,7 +60,7 @@ if __name__ == '__main__':
 			sensor_value = grovepi.analogRead(potentiometer)
 
 			# Calculate voltage
-			voltage = round((float) (sensor_value) / 517, 1)
+			voltage = round((float) (sensor_value) / 517, 2)
 			# voltage = round((float)(sensor_value) * adc_ref / 1023, 2)
 
 			# Calculate rotation in degrees (0 to 300) of the potentiometer
@@ -78,7 +78,7 @@ if __name__ == '__main__':
 			###############################################################
 			# Set the LCD text to what was calculated
 			lcd.setRGB(0,255,0)
-			lcd.setText_norefresh("thresh: %d \n distance: %d" %(voltage, ranger_raw))
+			lcd.setText_norefresh("thresh: %d \n distance: %d" %(sensor_value, ranger_raw))
 			# lcd.setText_norefresh("angle is: %.1f \n distance: %d" %(degrees, ranger_raw))
 
 		

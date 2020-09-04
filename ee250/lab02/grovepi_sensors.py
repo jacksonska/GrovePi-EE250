@@ -45,7 +45,7 @@ if __name__ == '__main__':
 
 	# Clear lcd screen
 	lcd.setText("")
-	lcd.setRGB(0,255,0)
+	lcd.setRGB(0,0,150)
 	# Main Program loop
 	while True:
 		try:
@@ -67,16 +67,16 @@ if __name__ == '__main__':
 			
 			# Check if the threshold is met
 			if ranger_raw <= threshold:
-				lcd.setRGB(255,0,0)
+				lcd.setRGB(0,0,150)
 				lcd.setText_norefresh("%dcm OBJ PRES\n %dcm" %(threshold,ranger_raw))	
 			else:
-				lcd.setRGB(0,255,0)
+				lcd.setRGB(0,0,150)
 				lcd.setText_norefresh("%dcm           \n%dcm" %(threshold, ranger_raw))
 
 			###############################################################
 		# Exceptions for quitting the program
 		except KeyboardInterrupt:
-			lcd.setRGB(102,102,255)
+			lcd.setRGB(0,0,150)
 			lcd.setText("Program Quit")
 			print("Program quit")
 			break

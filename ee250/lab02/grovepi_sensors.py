@@ -53,7 +53,7 @@ if __name__ == '__main__':
 			# Read sensor value from potentiometer
 			sensor_value = grovepi.analogRead(potentiometer)
 			
-			# Calculate the distance threshold in cm from the raw value of the potentiometer
+			# Calculate the distance threshold in cm from the raw value of the potentiometer. [0,517]
 			threshold = round((float)(sensor_value) * MAX_ULTRASONIC / MAX_POTENTIOMETER, 1)
 
 			###############################################################
